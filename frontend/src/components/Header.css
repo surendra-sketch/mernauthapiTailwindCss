@@ -1,0 +1,3 @@
+.link {
+  @apply border hover:shadow-lg  duration-200  hover:bg-green-950 px-2 py-1 rounded-md;
+}
