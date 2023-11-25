@@ -18,6 +18,13 @@ const userApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    updateuser: builder.mutation({
+      query: (data) => ({
+        url: `${BASE_URL}/updateuser`,
+        method: "PUT",
+        body: data,
+      }),
+    }),
     logout: builder.mutation({
       query: (data) => ({
         url: `${BASE_URL}/logoutuser`,
@@ -25,8 +32,20 @@ const userApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    deteteuser: builder.mutation({
+      query: (data) => ({
+        url: `${BASE_URL}/deleteuser`,
+        method: "DELETE",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation, useLogoutMutation } =
-  userApiSlice;
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useLogoutMutation,
+  useUpdateuserMutation,
+  useDeteteuserMutation,
+} = userApiSlice;

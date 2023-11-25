@@ -111,9 +111,21 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 // route DELETE  http://localhost:5000/api/users/deleteuser
 // private
 const deleteUserProfile = asyncHandler(async (req, res) => {
-  const id = req.params.id;
-  const deleteuser = await User.findByIdAndDelete(id);
-  res.status(200).json(deleteuser);
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    const id = user._id;
+    const deleteuser = await User.findByIdAndDelete(id);
+
+    res.cookie("jwt", "", {
+      httpOnly: true,
+      expires: new Date(0),
+    });
+    res.status(200).json(deleteuser);
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
 });
 
 // @desc     delete all user  profile
@@ -121,7 +133,7 @@ const deleteUserProfile = asyncHandler(async (req, res) => {
 // private
 const deleteAllUserProfile = asyncHandler(async (req, res) => {
   const deleted = await User.deleteMany();
-  res.status(200).json(deleted);
+  res.status(200).json(deleted._id);
 });
 
 export {

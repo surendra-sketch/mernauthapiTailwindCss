@@ -32,27 +32,42 @@ const Header = () => {
   };
 
   return (
-    <nav className=" z:999 fixed bg-purple-600   text-white w-full  px-5 py-3 top-0 flex justify-between ">
+    <nav className=" z:999 fixed bg-purple-600   text-white w-full  px-5 py-2 top-0 flex justify-between items-center ">
       <Link to="/">
-        <h1 className="text-2xl  border-l-emerald-300">logo</h1>
+        <h1 className="text-2xl  border-l-emerald-300">
+          CRUD<span className="text-emerald-100">ia</span>
+        </h1>
       </Link>
-
+      <Link to="/addgoal">
+        <h1 className="link ">Create Goal</h1>
+      </Link>
       {userinfo ? (
         <>
           <div className="card">
-            <h1 onClick={handleToggle} className="cursor-pointer">
-              Click me
-            </h1>
+            {userinfo ? (
+              <div
+                onClick={handleToggle}
+                className="h-[50px] w-[50px]  rounded-full  "
+              >
+                <img
+                  className="h-[100%] w-[100%] rounded-full cursor-pointer "
+                  src="/assets/user.jpeg"
+                  alt="user"
+                />
+              </div>
+            ) : null}
+
             {toggleProfile ? (
-              <ul className="block absolute text-center p-5 right-1 h-[200px] top-12 shadow-xl w-[200px] leading-6 rounded-2xl  bg-white text-black">
+              <ul className="block absolute text-center p-5 right-1  top-[70px] shadow-xl w-[200px] leading-6 rounded-2xl  bg-white text-black">
                 <li
                   onClick={handleToggle}
-                  className="link mt-1 hover:text-white"
+                  className="link mt-1 hover:text-white duration-100"
                 >
-                  <Link to="/profile" className="w-full">
+                  <Link to="/updateprofile" className="w-full">
                     Profile
                   </Link>
                 </li>
+
                 <li
                   onClick={handlelogut}
                   className="link mt-3 hover:text-white"

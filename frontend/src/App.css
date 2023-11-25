@@ -1,1 +1,10 @@
- 
+.bgtop {
+  position: relative;
+  background: url("../public/assets/topbg.jpg") no-repeat center/cover;
+  z-index: -1;
+}
+
+.dsc {
+  filter: contrast(200%);
+  text-shadow: 2px 3px #667;
+}
